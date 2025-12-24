@@ -22,15 +22,14 @@ workflows:
         script: |
           npx cap sync ios
 
-      - name: Build iOS archive
+      - name: Build iOS (simulator)
         script: |
           xcodebuild \
             -workspace ios/App/App.xcworkspace \
             -scheme App \
             -configuration Release \
-            -sdk iphoneos \
-            -archivePath build/App.xcarchive \
-            archive
-
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            build
     artifacts:
       - build/App.xcarchive
