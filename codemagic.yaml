@@ -1,14 +1,42 @@
 workflows:
   ios-capacitor:
     name: Capacitor iOS Build
+
+    # Build machine type (macOS required for Xcode)
+    instance_type: mac_mini_m2
+
+    # How long build can run before timeout (minutes)
+    max_build_duration: 60
+
+    # Environment setup
     environment:
+      # Define Node version
       vars:
         NODE_VERSION: "18"
+      # Set Xcode version (latest supported)
+      xcode: latest
+
+    # Steps to run
     scripts:
-      - npm install
-      - npm run build
-      - npx cap sync ios
+      - name: Install dependencies
+        script: |
+          npm install
+
+      - name: Build web assets
+        script: |
+          npm run build
+
+      - name: Sync Capacitor iOS
+        script: |
+          npx cap sync ios
+
+    # iOS project build settings
     xcode:
       project_path: ios/App/App.xcworkspace
       scheme: App
       export_method: development
+
+    # Artifacts to collect (IPA + logs)
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
