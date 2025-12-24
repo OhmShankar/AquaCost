@@ -29,7 +29,7 @@ workflows:
             -scheme App \
             -configuration Release \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            -destination 'platform=iOS Simulator,name=iPhone 17 Pro Max' \
             build
     artifacts:
       - build/App.xcarchive
