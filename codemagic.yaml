@@ -9,7 +9,7 @@ workflows:
       - npm run build
       - npx cap sync ios
     xcode:
-      project_path: ios/App/App.xcodeproj
+      project_path: ios/App/App.xcworkspace
       scheme: App
       export_method: app-store
     publishing:
