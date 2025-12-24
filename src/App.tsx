@@ -12,11 +12,9 @@ import {
 function App() {
   const [currentPage, setCurrentPage] = useState<'calculator' | 'getting-started'>('calculator');
   const [activeTab, setActiveTab] = useState<'rainwater' | 'hvac'>('rainwater');
-  const [apiStatus, setApiStatus] = useState<string>('Checking...');
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<CalculatorResult | null>(null);
   const resultsRef = React.useRef<HTMLDivElement>(null);
-  const [isCompact, setIsCompact] = useState(false);
 
 
   // Rainwater form state
@@ -50,10 +48,6 @@ function App() {
     pump_type: 'small_condensate'
   });
 
-  useEffect(() => {
-    // Set status to ready since we're using local calculations
-    setApiStatus('Ready - Local Calculations');
-  }, []);
 
   // Auto-scroll to results when calculation completes
   useEffect(() => {
@@ -67,34 +61,6 @@ function App() {
     }
   }, [result]);
 
-  useEffect(() => {
-    const ENTER_Y = 60; // scroll down threshold
-    const LEAVE_Y = 20; // scroll up threshold
-    let ticking = false;
-
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-
-      window.requestAnimationFrame(() => {
-        const y = window.scrollY;
-
-        setIsCompact(prev => {
-          if (!prev && y > ENTER_Y) return true;
-          if (prev && y < LEAVE_Y) return false;
-          return prev;
-        });
-
-        ticking = false;
-      });
-    };
-
-    // initialize state immediately
-    setIsCompact(window.scrollY > ENTER_Y);
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
 
 
