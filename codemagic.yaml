@@ -1,0 +1,19 @@
+workflows:
+  ios-capacitor:
+    name: Capacitor iOS Build
+    environment:
+      vars:
+        NODE_VERSION: "18"
+    scripts:
+      - npm install
+      - npm run build
+      - npx cap sync ios
+    xcode:
+      project_path: ios/App/App.xcodeproj
+      scheme: App
+      export_method: app-store
+    publishing:
+      app_store_connect:
+        api_key_path: ./your_api_key.p8   # replace with path to your key
+        issuer_id: YOUR_ISSUER_ID        # replace
+        key_id: YOUR_KEY_ID              # replace
