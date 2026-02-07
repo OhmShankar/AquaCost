@@ -2,7 +2,6 @@
   "expo": {
     "name": "frontend",
     "slug": "frontend",
-    "newArchEnabled": false,
     "jsEngine": "hermes"
   }
 }
