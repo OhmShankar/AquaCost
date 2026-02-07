@@ -8,7 +8,7 @@ export default function App() {
   // On web, redirect to the actual website
   if (Platform.OS === 'web') {
     if (typeof window !== 'undefined') {
-      window.location.href = 'https://example.com';
+      window.location.href = 'http://localhost:3000';
     }
     return null;
   }
@@ -16,7 +16,7 @@ export default function App() {
   // On iOS/Android, use WebView
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <WebView source={{ uri: 'https://example.com' }} />
+      <WebView source={{ uri: 'http://localhost:3000' }} />
     </SafeAreaView>
   );
 }
