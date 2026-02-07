@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "frontend",
+    "slug": "frontend",
+    "newArchEnabled": false,
+    "jsEngine": "hermes",
+    "android": {
+      "package": "com.ohmshankar.frontend"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2fbe8351-c1b9-4979-a55f-a2125c7dd1ca"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.ohmshankar.frontend",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    }
+  }
+}
